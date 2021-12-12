@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head') %>
+</head>
+
+<body>
+    <header>
+		<%- include('partials/navigation') %>
+	</header>
+    <form action="/post" method="post" class="">
+        <h3 class="card-title">Add news</h3>
+        <div class="form-group">
+            <input type="text" name="UserName" class="form-control" placeholder="UserName">
+        </div>
+        <div class="form-group">
+            <input type="text" name="UserId" class="form-control" placeholder="UserId">
+        </div>
+        <div class="form-group">
+            <input type="text" name="TuitType" class="form-control" placeholder="Type">
+        </div>
+        <div class="form-group">
+            <input type="text" name="Content" class="form-control" placeholder="Content">
+        </div>
+        <div class="form-group">
+            <input type="text" name="Likes" class="form-control" placeholder="Likes">
+        </div>
+        <div class="form-group">
+            <input type="text" name="Rts" class="form-control" placeholder="Rt">
+        </div>
+        <div class="form-group">
+            <input type="text" name="Comments" class="form-control" placeholder="Comments">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary">
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<%- include('partials/head') %>
+</head>
+
+<body>
+	<header>
+		<%- include('partials/navigation') %>
+	</header>
+	<article class="main-body">
+		<% dbTuiter.forEach(info => { %>
+		<section class="tuit">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png" class="profile-icon">
+			<div class="tuit-body">
+				<div class="tuit__author"><%= info.UserName %></div>
+				<a class="id-link" href="#">
+					<div class="tuit__id"><%= info.UserId %></div>
+				</a>
+				<div class="tuit__date"><%= info.TuitDate %></div>
+				<div class="tuit__type"><%= info.TuitType %></div>
+				<p class="tuit-content"><%= info.Content %></p>
+				<div class="tuit-options">
+					<div class="comment">
+						<i class="far fa-comment"></i><p><%= info.Comments %></p>
+					</div>
+
+					<div class="retuit">
+						<i class="fas fa-retweet"></i><p><%= info.Rts %></p>
+					</div>
+
+					<div class="like">
+						<i class="fas fa-heart"><p><%= info.Likes %></p></i>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<% }); %>
+	</article>
+</body>
+
+</html>

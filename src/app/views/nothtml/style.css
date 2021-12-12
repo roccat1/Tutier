@@ -1,0 +1,152 @@
+/*26/11/2021*/
+
+:root{
+    --color-menu: #33ccff;
+}
+
+/*general things*/
+*{
+	font-family: sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+
+/*___________nav_________________*/
+.menu{
+    height: 56.42px;
+    display: grid;
+    grid-template-columns: 150px 1fr 600px;
+    user-select: none;
+}
+
+.logo{
+    display: inline;
+}
+
+/*chapusa numero 1*/
+.spacer{
+    height: 56.42px;
+    background-color: var(--color-menu);
+}
+
+/*icons bar*/
+.icons-bar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    height: 56.42px;
+    align-items: center;
+    background-color: var(--color-menu);
+}
+
+.icons-bar__li{
+    display: inline;
+    text-decoration: none;
+    text-align: center;
+}
+
+.icons-bar__li a{
+    width: 100%;
+}
+
+.icons-bar__li i{
+    color: rgb(66, 66, 66);
+}
+
+.icons-bar__li:first-child{
+    padding-left: 5px;
+}
+
+.icons-bar__text{
+    display: inline;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+/*chaplusa numero 2*/
+.jumper{
+    display: none;
+}
+
+@media only screen and (max-width: 550px){
+    .jumper{
+        display: inline;
+    }
+
+    .menu{
+        height: 56.42px;
+        display: grid;
+        grid-template-columns: 150px 0px 1fr;
+    }
+
+    .icons-bar__li{
+        margin-left: 2px;
+    }
+}
+
+/*_________main body_______________*/
+
+.main-body{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-right: 15vw;
+    padding-left: 15vw;
+    padding-top: 20px;
+}
+
+.tuit{
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    border-radius: 30px;
+    outline: solid 2px rgb(122, 122, 122);
+    margin-bottom: 23px;
+}
+
+.profile-icon{
+    width: 100%;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.tuit__author{
+    display: inline;
+    padding-right: 5px;
+}
+
+.tuit__id{
+    display: inline;
+    padding: 5px;
+}
+.id-link{
+    color: rgb(0, 140, 255);
+}
+
+.tuit__date{
+    display: inline;
+    padding: 5px;
+}
+
+.tuit__type{
+    display: block;
+    font-style: italic;
+    padding-left: 10px;
+    padding-bottom: 3px;
+}
+
+.tuit-content{
+    display: block;
+}
+
+.tuit-options{
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tuit-options *{
+    display: grid;
+    grid-template-columns: 20px 1fr;
+}
