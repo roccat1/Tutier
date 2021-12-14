@@ -1,0 +1,66 @@
+
+<%- include('./var.css') %>
+
+/*_________main body_______________*/
+
+.main-body{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-right: 15vw;
+    padding-left: 15vw;
+    padding-top: 20px;
+}
+
+.tuit{
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    border-radius: 30px;
+    outline: solid 2px rgb(122, 122, 122);
+    margin-bottom: 23px;
+}
+
+.profile-icon{
+    width: 100%;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.tuit__author{
+    display: inline;
+    padding-right: 5px;
+}
+
+.tuit__id{
+    display: inline;
+    padding: 5px;
+}
+.id-link{
+    color: rgb(0, 140, 255);
+}
+
+.tuit__date{
+    display: inline;
+    padding: 5px;
+}
+
+.tuit__type{
+    display: block;
+    font-style: italic;
+    padding-left: 10px;
+    padding-bottom: 3px;
+}
+
+.tuit-content{
+    display: block;
+}
+
+.tuit-options{
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tuit-options *{
+    display: grid;
+    grid-template-columns: 20px 1fr;
+}

@@ -5,21 +5,32 @@ const PassportLocal = require('passport-local').Strategy;
 
 const app = require("../../config/server");
 const dbConnection = require('../../config/dbConnections');
+const connection = dbConnection();
 
-var user;
+var user, dbUsername;
 
-//config
 passport.use(new PassportLocal(function(username, password, done){
     //done(err,user,options)
-    if(username === "admin@admin.admin" && password === "admin"){
-        user = {
-            username,
-            password
-        }
-        return done(null,{id:0, name:"admin"});
+    connection.query('SELECT * FROM users', (err, result) => {
+        var i=0;
+        dbUsername = result[i];
+        while (dbUsername != undefined) {
+            if (username == result[i].email && password == result[i].password) {
+                console.log("you are")
+                user = {
+                    email: result[i].email,
+                    username: result[i].username,
+                    password: result[i].password
+                }
+                return done(null,{id: i});
+            }
+            i++;
+            dbUsername = result[i];
     }
-    done(null, false);
+    return done(null, false);
+    });
 }));
+
 passport.serializeUser(function(user,done){
     done(null,user.id);
 });
@@ -27,10 +38,10 @@ passport.deserializeUser(function(id,done){
     done(null, {id: 0, name: "admin"});
 });
 
-
-
 module.exports = (app) => {
-    const connection = dbConnection();
+    app.get('/', (req, res) => {
+        res.redirect('/home');
+    });
 
     app.get('/home', (req, res) => {
         connection.query('SELECT * FROM tuiter', (err, result) => {
@@ -75,6 +86,34 @@ module.exports = (app) => {
         successRedirect: "/profile",
         failureRedirect: "/login"
     }));
+
+    app.get("/register",(req, res)=>{
+        res.redirect('/login');
+    });
+    app.post('/register', (req, res) => {
+        var {at, username, password} = req.body;
+        at = "@"+at;
+        connection.query('INSERT INTO users SET?', {
+            username: at,
+            email: username,
+            password
+        }, (err, result) => {
+            res.redirect('/profile');
+            console.log("failed on posting");
+        });
+    });
+
+    app.get('/logout', function(req, res, next) {
+        if (req.session) {
+            req.session.destroy(function (err) {
+            if (err) {
+                return next(err);
+            } else {
+                return res.redirect('/login');
+            }
+            });
+        }
+    });
 
     app.get("/profile", (req, res, next) => {
         if (req.isAuthenticated()) return next();

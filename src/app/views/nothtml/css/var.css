@@ -1,0 +1,13 @@
+:root{
+    --color-menu: #33ccff;
+}
+
+/*general things*/
+*{
+	font-family: sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}

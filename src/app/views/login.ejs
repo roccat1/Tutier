@@ -1,14 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <%- include('partials/head') %>
+	<%- include('partials/head') %>
+    <style><%- include('nothtml/css/nav.css') %></style>
+	<style><%- include('nothtml/css/login.css') %></style>
 </head>
 <body>
-    <header><%- include('partials/navigation') %></header>
-    <form action="/login" method="POST">
-        <input type="email" name="username">
-        <input type="password" name="password">
-        <input type="submit" name="submit" value="Send">
+    <header>
+		<%- include('partials/navigation') %>
+	</header>
+<div class="forms-container">
+    <form class="login" action="/login" method="post">
+        <h2>Login</h2>
+
+        <label for="login-username"> Username:</label>
+        <input type="text" id="login-username" name="username">
+
+        <label for="login-passw"> Password:</label>
+        <input type="password" id="login-passw" name="password">
+
+        <div class="show-passw-container">
+            <input type="checkbox"  onclick="logPressed(logShowPasswButton)" class="show-passw-button" id="login__show-passw-button">
+            <div class="show-passw__label">
+                <label for="login-passw" class="show-passw-label"> show password</label>
+            </div>
+        </div>
+
+        <div class="sumbbit-button-container">
+        <input type="submit" value="Sumbit" class="sumbit-button login-sumbit-button">
+        </div>
     </form>
+
+    <form class="register" action="/register" method="post">
+        <h2>Register</h2>
+
+        <label for="register-username"> Username:</label>
+        <input type="text" id="register-username" name="at">
+
+        <label for="register-email"> Email:</label>
+        <input type="text" id="register-email" name="username">
+
+        <label for="register-passw"> Password:</label>
+        <input type="password" id="register-passw" name="password">
+
+        <div class="show-passw-container">
+            <input type="checkbox" onclick="regPressed(regShowPasswButton)" class="show-passw-button" id="register__show-passw-button">
+            <div class="show-passw__label">
+                <label for="login-passw" class="show-passw-label"> show password</label>
+            </div>
+        </div>
+
+        <div class="sumbbit-button-container">
+        <input type="submit" value="Send" class="sumbit-button">
+        </div>
+    </form>
+</div>
+<script><%- include('nothtml/js/login.js') %></script>
 </body>
 </html>

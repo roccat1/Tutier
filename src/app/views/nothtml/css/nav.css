@@ -1,0 +1,73 @@
+<%- include('./var.css') %>
+
+/*___________nav_________________*/
+.menu{
+    height: 56.42px;
+    display: grid;
+    grid-template-columns: 150px 1fr 600px;
+    user-select: none;
+}
+
+.logo{
+    display: inline;
+}
+
+/*chapusa numero 1*/
+.spacer{
+    height: 56.42px;
+    background-color: var(--color-menu);
+}
+
+/*icons bar*/
+.icons-bar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    height: 56.42px;
+    align-items: center;
+    background-color: var(--color-menu);
+}
+
+.icons-bar__li{
+    display: inline;
+    text-decoration: none;
+    text-align: center;
+}
+
+.icons-bar__li a{
+    width: 100%;
+}
+
+.icons-bar__li i{
+    color: rgb(66, 66, 66);
+}
+
+.icons-bar__li:first-child{
+    padding-left: 5px;
+}
+
+.icons-bar__text{
+    display: inline;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+/*chaplusa numero 2*/
+.jumper{
+    display: none;
+}
+
+@media only screen and (max-width: 550px){
+    .jumper{
+        display: inline;
+    }
+
+    .menu{
+        height: 56.42px;
+        display: grid;
+        grid-template-columns: 150px 0px 1fr;
+    }
+
+    .icons-bar__li{
+        margin-left: 2px;
+    }
+}

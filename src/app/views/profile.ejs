@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <%- include('partials/head') %>
+    <style><%- include('nothtml/css/nav.css') %></style>
 </head>
 <body>
     <header><%- include('partials/navigation') %></header>
-    <%= user.username %>
+    <h2>Email: <%= user.email %></h2>
+    <h2>Username: <%= user.username %></h2>
+    <h2>Password: <%= user.password %></h2>
+    <% console.log(user) %>
+    <a href="/logout"><h2>logout</h2></a>
 </body>
 </html>
