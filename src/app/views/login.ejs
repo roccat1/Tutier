@@ -13,7 +13,7 @@
     <form class="login" action="/login" method="post">
         <h2>Login</h2>
 
-        <label for="login-username"> Username:</label>
+        <label for="login-username"> Email:</label>
         <input type="text" id="login-username" name="username">
 
         <label for="login-passw"> Password:</label>
@@ -35,13 +35,13 @@
         <h2>Register</h2>
 
         <label for="register-username"> Username:</label>
-        <input type="text" id="register-username" name="at">
+        <input type="text" id="register-username" name="at" required>
 
         <label for="register-email"> Email:</label>
-        <input type="text" id="register-email" name="username">
+        <input type="text" id="register-email" name="username" required>
 
         <label for="register-passw"> Password:</label>
-        <input type="password" id="register-passw" name="password">
+        <input type="password" id="register-passw" name="password" required>
 
         <div class="show-passw-container">
             <input type="checkbox" onclick="regPressed(regShowPasswButton)" class="show-passw-button" id="register__show-passw-button">

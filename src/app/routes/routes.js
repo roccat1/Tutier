@@ -16,7 +16,6 @@ passport.use(new PassportLocal(function(username, password, done){
         dbUsername = result[i];
         while (dbUsername != undefined) {
             if (username == result[i].email && password == result[i].password) {
-                console.log("you are")
                 user = {
                     email: result[i].email,
                     username: result[i].username,
@@ -44,7 +43,9 @@ module.exports = (app) => {
     });
 
     app.get('/home', (req, res) => {
+        console.log(req.ip + " /home");
         connection.query('SELECT * FROM tuiter', (err, result) => {
+            result = result.reverse()
             res.render('index', {
                 title: 'tuiter 4 real',
                 dbTuiter: result
@@ -52,31 +53,42 @@ module.exports = (app) => {
         });
     });
 
-    //post view
-    app.get('/post', (req, res) => {
+    app.get("/post", (req, res, next) => {
+        if (req.isAuthenticated()) return next();
+        res.redirect("/login");
+    }, (req, res) => {
+        console.log(req.ip + " /post");
         res.render('post', {
             title: "post",
+            user
         });
     });
     //post post
     app.post('/post', (req, res) => {
-        const {UserName, UserId, TuitDate, TuitType, Content, Likes, Rts, Comments} = req.body;
+        const {Content} = req.body;
+        console.log(req.ip + ' post "' + Content + '" with username: "' + user.email + '"');
+        date = new Date();
         connection.query('INSERT INTO tuiter SET?', {
-            UserName: UserName,
-            UserId: UserId,
-            TuitType: TuitType,
+            UserName: user.username,
+            UserId: user.username,
+            TuitType: "Post",
             Content: Content,
-            Likes: parseInt(Likes),
-            Rts: parseInt(Rts),
-            Comments: parseInt(Comments)
+            Likes: 0,
+            Rts: 0,
+            Comments: 0,
+            Year: date.getFullYear(),
+            Month: date.getMonth(),
+            Day: date.getDate(),
+            Hour: date.getHours(),
+            Minute: date.getMinutes()
         }, (err, result) => {
             res.redirect('/post');
-            console.log("failed on posting");
         });
     });
 
     //login view
     app.get("/login",(req, res)=>{
+        console.log(req.ip + ' /login');
         res.render("login", {
             title: "login"
         });
@@ -92,6 +104,7 @@ module.exports = (app) => {
     });
     app.post('/register', (req, res) => {
         var {at, username, password} = req.body;
+        console.log(req.ip + ' registering with email: ' + username + 'and name: ' + at);
         at = "@"+at;
         connection.query('INSERT INTO users SET?', {
             username: at,
@@ -99,12 +112,12 @@ module.exports = (app) => {
             password
         }, (err, result) => {
             res.redirect('/profile');
-            console.log("failed on posting");
         });
     });
 
     app.get('/logout', function(req, res, next) {
         if (req.session) {
+            console.log(req.ip + ' logged out');
             req.session.destroy(function (err) {
             if (err) {
                 return next(err);
@@ -119,7 +132,7 @@ module.exports = (app) => {
         if (req.isAuthenticated()) return next();
         res.redirect("/login");
     }, (req, res) => {
-        console.log();
+        console.log(req.ip + ' /profile with user: ' + user.username);
         res.render('profile', {
             title: "profile",
             user
