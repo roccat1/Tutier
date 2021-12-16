@@ -45,7 +45,7 @@ module.exports = (app) => {
     app.get('/home', (req, res) => {
         console.log(req.ip + " /home");
         connection.query('SELECT * FROM mews', (err, result) => {
-            //result = result.reverse()
+            result = result.reverse()
             res.render('index', {
                 title: 'tuiter 4 real',
                 dbTuiter: result
