@@ -44,8 +44,8 @@ module.exports = (app) => {
 
     app.get('/home', (req, res) => {
         console.log(req.ip + " /home");
-        connection.query('SELECT * FROM tuiter', (err, result) => {
-            result = result.reverse()
+        connection.query('SELECT * FROM mews', (err, result) => {
+            //result = result.reverse()
             res.render('index', {
                 title: 'tuiter 4 real',
                 dbTuiter: result
@@ -68,7 +68,7 @@ module.exports = (app) => {
         const {Content} = req.body;
         console.log(req.ip + ' post "' + Content + '" with username: "' + user.email + '"');
         date = new Date();
-        connection.query('INSERT INTO tuiter SET?', {
+        connection.query('INSERT INTO mews SET?', {
             UserName: user.username,
             UserId: user.username,
             TuitType: "Post",
