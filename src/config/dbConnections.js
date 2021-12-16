@@ -7,9 +7,9 @@ let DBPassword = fs.readFileSync(path.join(__dirname, '../DBPassword.txt'), 'utf
 
 module.exports = () => {
     return mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
+        host: 'btumg0mjsuubeu3sk8e2-mysql.services.clever-cloud.com',
+        user: 'urbsqc3vqdmfqarq',
         password: DBPassword,
-        database: 'tuiter_db'
+        database: 'btumg0mjsuubeu3sk8e2'
     });
 }
