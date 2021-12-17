@@ -8,6 +8,7 @@ const dbConnection = require('../../config/dbConnections');
 const connection = dbConnection();
 
 var user, dbUsername;
+var a = 3;
 
 passport.use(new PassportLocal(function(username, password, done){
     //done(err,user,options)
@@ -40,6 +41,10 @@ passport.deserializeUser(function(id,done){
 module.exports = (app) => {
     app.get('/', (req, res) => {
         res.redirect('/home');
+    });
+
+    app.get("/register",(req, res)=>{
+        res.redirect('/login');
     });
 
     app.get('/home', (req, res) => {
@@ -99,9 +104,6 @@ module.exports = (app) => {
         failureRedirect: "/login"
     }));
 
-    app.get("/register",(req, res)=>{
-        res.redirect('/login');
-    });
     app.post('/register', (req, res) => {
         var {at, username, password} = req.body;
         console.log(req.ip + ' registering with email: ' + username + 'and name: ' + at);

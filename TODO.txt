@@ -5,3 +5,7 @@ rt
 encrypt
 is email
 mewem
+primera vegada
+noms iguals
+3rd person profiles
+REGISTER = LOGIN meassage
