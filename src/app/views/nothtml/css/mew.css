@@ -11,7 +11,7 @@
     padding-top: 20px;
 }
 
-.tuit{
+.mew{
     display: grid;
     grid-template-columns: 60px 1fr;
     border-radius: 30px;
@@ -25,12 +25,12 @@
     padding: 10px;
 }
 
-.tuit__author{
+.mew__author{
     display: inline;
     padding-right: 5px;
 }
 
-.tuit__id{
+.mew__id{
     display: inline;
     padding: 5px;
 }
@@ -38,29 +38,29 @@
     color: rgb(0, 140, 255);
 }
 
-.tuit__date{
+.mew__date{
     display: inline;
     padding: 5px;
 }
 
-.tuit__type{
+.mew__type{
     display: block;
     font-style: italic;
     padding-left: 10px;
     padding-bottom: 3px;
 }
 
-.tuit-content{
+.mew-content{
     display: block;
 }
 
-.tuit-options{
+.mew-options{
     padding: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.tuit-options *{
+.mew-options *{
     display: grid;
     grid-template-columns: 20px 1fr;
 }

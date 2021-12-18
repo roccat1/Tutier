@@ -4,7 +4,7 @@
 <head>
 	<%- include('partials/head') %>
 	<style><%- include('nothtml/css/nav.css') %></style>
-	<style><%- include('nothtml/css/tuit.css') %></style>
+	<style><%- include('nothtml/css/mew.css') %></style>
 </head>
 
 <body>
@@ -12,24 +12,24 @@
 		<%- include('partials/navigation') %>
 	</header>
 	<article class="main-body">
-		<% dbTuiter.forEach(info => { %>
-		<section class="tuit">
+		<% dbMewem.forEach(info => { %>
+		<section class="mew">
 			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png" class="profile-icon">
-			<div class="tuit-body">
-				<div class="tuit__author"><%= info.UserName %></div>
+			<div class="mew-body">
+				<div class="mew__author"><%= info.UserName %></div>
 				<a class="id-link" href="#">
-					<div class="tuit__id"><%= info.UserId %></div>
+					<div class="mew__id"><%= info.UserId %></div>
 				</a>
-				<div class="tuit__date"><%= info.Year %>/<%= info.Month+1 %>/<%= info.Day %>/<%= info.Hour %>h/<%= info.Minute+1 %>m</div>
-				<div class="tuit__type"><%= info.TuitType %></div>
-				<p class="tuit-content"><%= info.Content %></p>
-				<div class="tuit-options">
+				<div class="mew__date"><%= info.Year %>/<%= info.Month+1 %>/<%= info.Day %>/<%= info.Hour %>h/<%= info.Minute+1 %>m</div>
+				<div class="mew__type"><%= info.mewType %></div>
+				<p class="mew-content"><%= info.Content %></p>
+				<div class="mew-options">
 					
 					<div class="comment">
 						<i class="far fa-comment"></i><p><%= info.Comments %></p>
 					</div>
 
-					<div class="retuit">
+					<div class="rt">
 						<i class="fas fa-retweet"></i><p><%= info.Rts %></p>
 					</div>
 

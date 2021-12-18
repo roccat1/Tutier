@@ -52,8 +52,8 @@ module.exports = (app) => {
         connection.query('SELECT * FROM mews', (err, result) => {
             result = result.reverse()
             res.render('index', {
-                title: 'tuiter 4 real',
-                dbTuiter: result
+                title: 'mewem',
+                dbMewem: result
             });
         });
     });
@@ -76,7 +76,7 @@ module.exports = (app) => {
         connection.query('INSERT INTO mews SET?', {
             UserName: user.username,
             UserId: user.username,
-            TuitType: "Post",
+            MewType: "Post",
             Content: Content,
             Likes: 0,
             Rts: 0,
